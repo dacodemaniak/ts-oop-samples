@@ -1,3 +1,5 @@
+import { StagiaireModel } from "./models/stagiaire-model";
+
 /**
  * main.ts : Entry point in oop-ts application
  * @author Aélion 2022-10
@@ -5,7 +7,9 @@
  */
 export class Main {
     public constructor() {
-        console.log('Hello TS');
+        const stagiaire: StagiaireModel = new StagiaireModel();
+        stagiaire.setBirthDate(new Date(2042, 3, 30));
+        console.log('Stagiaire : ' + stagiaire.getBirthDate());
     }
 }
 
