@@ -4,7 +4,7 @@ export class StagiaireModel {
     public firstName: string = '';
     public lastName: string = '';
     private birthDate: Date = new Date();
-    public poe: POEModel = new POEModel();
+    private poe: POEModel = new POEModel();
 
     public setBirthDate(birthDate: Date): void {
         const today: Date = new Date();
@@ -19,6 +19,11 @@ export class StagiaireModel {
         return this.birthDate;
     }
 
+    public setPOE(poe: POEModel): void {
+        this.poe = poe;
+        this.poe.add(this);
+    }
+    
     public toString(): string {
         return `${this.firstName} ${this.lastName}
             ${this.birthDate.getDate()}-${this.birthDate.getMonth() + 1}-${this.birthDate.getFullYear()} 

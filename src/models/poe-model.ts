@@ -38,7 +38,7 @@ export class POEModel {
     }
 
     public listStagiaires(): string {
-        let output: string  = '';
+        let output: string  = 'Liste des stagiaires de ' + this.title + '\n';
         if (this.stagiaires.length) {
             for (const stagiaire of this.stagiaires) {
                 output += `${stagiaire.firstName} ${stagiaire.lastName}\n`;
