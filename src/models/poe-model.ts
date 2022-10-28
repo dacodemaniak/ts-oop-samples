@@ -1,7 +1,10 @@
+import { StagiaireModel } from './stagiaire-model';
 export class POEModel {
     public title: string = '';
     private beginDate: Date = new Date();
     private endDate: Date = new Date();
+
+    private stagiaires: Array<StagiaireModel> = [];
 
     /**
      * Sets the beginning and the end of this POE
@@ -26,6 +29,25 @@ export class POEModel {
 
     public getEndDate(): Date {
         return this.endDate;
+    }
+
+    public add(stagiaire: StagiaireModel): void {
+        if (this.stagiaires.includes(stagiaire) !== true) {
+            this.stagiaires.push(stagiaire);
+        }
+    }
+
+    public listStagiaires(): string {
+        let output: string  = '';
+        if (this.stagiaires.length) {
+            for (const stagiaire of this.stagiaires) {
+                output += `${stagiaire.firstName} ${stagiaire.lastName}\n`;
+            }
+        } else {
+            output = 'Any intern in ' + this.title;
+        }
+
+        return output;
     }
 
     public toString(): string {

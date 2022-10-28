@@ -17,6 +17,7 @@ export class Main {
         const poe: POEModel = new POEModel();
         poe.title = 'Fullstack Java Angular';
         poe.setDates(new Date(2023, 0, 27), new Date(2022, 9, 24));
+        poe.add(stagiaire);
 
         stagiaire.poe = poe;
 
@@ -26,8 +27,10 @@ export class Main {
         bond.setBirthDate(new Date(1900, 0, 7));
         bond.poe = poe;
 
-        console.log(stagiaire.toString());
-        console.log(bond.toString());
+        poe.add(bond);
+        poe.add(stagiaire);
+
+        console.log(poe.listStagiaires());
     }
 }
 
