@@ -16,12 +16,4 @@ export class StagiaireModel {
     public getBirthDate(): Date {
         return this.birthDate;
     }
-
-    public setLastName(lastName: string): void {
-        this.lastName = lastName;
-    }
-
-    public getLastName(): string {
-        return this.lastName;
-    }
 }
