@@ -4,6 +4,7 @@
   "description": "OOP Typescript",
   "main": "index.js",
   "scripts": {
+    "start": "./node_modules/.bin/ts-node ./src/main",
     "test": "jest"
   },
   "keywords": [
