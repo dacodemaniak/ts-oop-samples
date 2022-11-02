@@ -1,6 +1,7 @@
 import { POEModel } from "./models/poe-model";
 import { POETypeModel } from "./models/poe-type-model";
 import { StagiaireModel } from "./models/stagiaire-model";
+import { StagiaireRepository } from "./repositories/stagiaire-repository";
 
 /**
  * main.ts : Entry point in oop-ts application
@@ -10,6 +11,7 @@ import { StagiaireModel } from "./models/stagiaire-model";
 export class Main {
     public constructor() { 
         
+
         const poei: POETypeModel = new POETypeModel();
         poei.title = 'POEI';
 
@@ -30,6 +32,9 @@ export class Main {
         stagiaire.lastName = 'Aubert';
         stagiaire.firstName = 'Jean-Luc';
         stagiaire.setPOE(poe);
+
+        const stagiaireRepository: StagiaireRepository = new StagiaireRepository();
+        stagiaireRepository.add(stagiaire);
 
         console.log('Stagiaire : ' + stagiaire.toString());
         
