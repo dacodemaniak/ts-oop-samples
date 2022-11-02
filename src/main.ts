@@ -1,4 +1,5 @@
 import { POEModel } from "./models/poe-model";
+import { POETypeModel } from "./models/poe-type-model";
 import { StagiaireModel } from "./models/stagiaire-model";
 
 /**
@@ -7,11 +8,22 @@ import { StagiaireModel } from "./models/stagiaire-model";
  * @version 1.0.0
  */
 export class Main {
-    public constructor() {        
+    public constructor() { 
+        
+        const poei: POETypeModel = new POETypeModel();
+        poei.title = 'POEI';
+        console.log('poei object has ' + poei.title + ' title');
+        const poec: POETypeModel = new POETypeModel();
+        poec.title = 'POEC';
+
         const poe: POEModel = new POEModel();
         poe.title = 'Fullstack Java Angular';
         poe.setDates(new Date(2023, 0, 27), new Date(2022, 9, 24));
+        poe.setPOEType(poei);
+        poe.setPOEType(poec); // Will not override previous type
         
+        console.log(poe.getPOEType()?.title);
+
         const stagiaire: StagiaireModel = new StagiaireModel();
         stagiaire.setBirthDate(new Date(2042, 3, 30));
         stagiaire.lastName = 'Aubert';

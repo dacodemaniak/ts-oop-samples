@@ -1,3 +1,4 @@
+import { POETypeModel } from './poe-type-model';
 import { StagiaireModel } from './stagiaire-model';
 export class POEModel {
     public title: string = '';
@@ -5,6 +6,9 @@ export class POEModel {
     private endDate: Date = new Date();
 
     private stagiaires: Array<StagiaireModel> = [];
+    // private stagiaires: StagiaireModel[] = [];
+
+    private poeType: POETypeModel | undefined = undefined;
 
     /**
      * Sets the beginning and the end of this POE
@@ -35,6 +39,16 @@ export class POEModel {
         if (this.stagiaires.includes(stagiaire) !== true) {
             this.stagiaires.push(stagiaire);
         }
+    }
+
+    public setPOEType(poeType: POETypeModel): void {
+        if (this.poeType === undefined) {
+            this.poeType = poeType;
+        }
+    }
+
+    public getPOEType(): POETypeModel | undefined {
+        return this.poeType;
     }
 
     public listStagiaires(): string {
