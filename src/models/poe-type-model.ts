@@ -1,4 +1,6 @@
-export class POETypeModel {
+import { Model } from "./model";
+
+export class POETypeModel extends Model {
     private _title: string = '';
 
     public set title(title: string) {

@@ -12,9 +12,10 @@ export class Main {
         
         const poei: POETypeModel = new POETypeModel();
         poei.title = 'POEI';
-        console.log('poei object has ' + poei.title + ' title');
+
         const poec: POETypeModel = new POETypeModel();
         poec.title = 'POEC';
+        console.log(poec.toString());
 
         const poe: POEModel = new POEModel();
         poe.title = 'Fullstack Java Angular';
@@ -30,6 +31,8 @@ export class Main {
         stagiaire.firstName = 'Jean-Luc';
         stagiaire.setPOE(poe);
 
+        console.log('Stagiaire : ' + stagiaire.toString());
+        
         const bond: StagiaireModel = new StagiaireModel();
         bond.firstName = 'James';
         bond.lastName = 'Bond';

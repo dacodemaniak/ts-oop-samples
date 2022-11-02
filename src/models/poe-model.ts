@@ -1,6 +1,7 @@
+import { Model } from './model';
 import { POETypeModel } from './poe-type-model';
 import { StagiaireModel } from './stagiaire-model';
-export class POEModel {
+export class POEModel extends Model {
     public title: string = '';
     private beginDate: Date = new Date();
     private endDate: Date = new Date();

@@ -1,6 +1,7 @@
+import { Model } from "./model";
 import { POEModel } from "./poe-model";
 
-export class StagiaireModel {
+export class StagiaireModel extends Model {
     public firstName: string = '';
     public lastName: string = '';
     private birthDate: Date = new Date();
@@ -24,16 +25,16 @@ export class StagiaireModel {
         this.poe.add(this);
     }
     
+    /**
+     * @override
+     * @see Model::toString()
+     * 
+     * @returns string
+     */
     public toString(): string {
         return `${this.firstName} ${this.lastName}
             ${this.birthDate.getDate()}-${this.birthDate.getMonth() + 1}-${this.birthDate.getFullYear()} 
             ${this.poe.toString()}
         `;
-    }
-
-    public toString2(): string {
-        return this.firstName + ' ' + this.lastName + '\n' +
-            this.birthDate.getDate() + '/' + this.birthDate.getMonth() + 1 + '/' + this.birthDate.getFullYear() + '\n' +
-            this.poe.toString();
     }
 }
