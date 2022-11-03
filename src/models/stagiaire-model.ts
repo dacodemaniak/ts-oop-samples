@@ -1,7 +1,9 @@
+import { Comparable } from "../interfaces/comparable";
 import { Model } from "./model";
 import { POEModel } from "./poe-model";
 
-export class StagiaireModel extends Model {
+export class StagiaireModel extends Model implements Comparable<StagiaireModel> {
+
     public firstName: string = '';
     public lastName: string = '';
     private birthDate: Date = new Date();
@@ -36,5 +38,20 @@ export class StagiaireModel extends Model {
             ${this.birthDate.getDate()}-${this.birthDate.getMonth() + 1}-${this.birthDate.getFullYear()} 
             ${this.poe.toString()}
         `;
+    }
+
+    public compare(t: StagiaireModel): number {
+        const meBirthYear: number = this.birthDate.getFullYear();
+        const theirBirthYear: number = t.birthDate.getFullYear();
+
+        if (meBirthYear > theirBirthYear) {
+            return 1;
+        } else {
+            if (meBirthYear === theirBirthYear) {
+                return 0;
+            }
+        }
+
+        return -1;
     }
 }
