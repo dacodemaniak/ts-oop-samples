@@ -1,7 +1,7 @@
-export abstract class Repository {
-    protected collection: Array<any> = [];
+export abstract class Repository<T> {
+    protected collection: Array<T> = [];
 
-    public getCollection(): Array<any> {
+    public getCollection(): Array<T> {
         return this.collection;
     }
 
@@ -17,7 +17,7 @@ export abstract class Repository {
     /**
      * @returns first item in the collection
      */
-    public findFirst(): any {
+    public findFirst(): T | null {
         if (this.getSize() > 0) {
             return this.collection[0];
         }
@@ -28,7 +28,7 @@ export abstract class Repository {
     /**
      * @returns Last item in the collection
      */
-    public findLast(): any {
+    public findLast(): T | null {
         if (this.getSize()) {
             return this.collection[this.getSize() - 1];
         }
@@ -40,7 +40,7 @@ export abstract class Repository {
      * @param index Index of an item in the collection
      * @returns The item at the index position
      */
-    public find(index: number): any {
+    public find(index: number): T | null {
         if (this.getSize()) {
             if (index < this.getSize()) {
                 return this.collection[index];
@@ -52,7 +52,7 @@ export abstract class Repository {
     /**
      * @param item Item to add to the collection
      */
-    public add(item: any): void {
+    public add(item: T): void {
         this.collection.push(item);
     }
 
@@ -62,7 +62,7 @@ export abstract class Repository {
      * @see splice() method of array Object
      * @see indexOf() method of array Object
      */
-    public remove(item: any): void {
+    public remove(item: T): void {
         if (this.hasElements()) {
             if (this.collection.includes(item)) {
                 this.collection.splice(

@@ -1,7 +1,7 @@
 import { StagiaireModel } from "../models/stagiaire-model";
 import { Repository } from "./repository"
 
-export class StagiaireRepository extends Repository {
+export class StagiaireRepository extends Repository<StagiaireModel> {
     /**
      * @override Repository::add() method
      * 
