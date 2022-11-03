@@ -74,6 +74,6 @@ export abstract class Repository {
     }
 
     private hasElements(): boolean {
-        return this.getSize() ? true : false;
+        return this.getSize() > 0;
     }
 }
