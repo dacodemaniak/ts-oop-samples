@@ -1,6 +1,8 @@
 import { POEModel } from "./models/poe-model";
 import { POETypeModel } from "./models/poe-type-model";
 import { StagiaireModel } from "./models/stagiaire-model";
+import { PrintFullStagiaireStrategy } from "./models/strategies/print-full-stagiaire-strategy";
+import { PrintNameAndBirthdateStrategy } from "./models/strategies/print-name-and-birthdate-strategy";
 import { StagiaireRepository } from "./repositories/stagiaire-repository";
 
 /**
@@ -28,10 +30,12 @@ export class Main {
         console.log(poe.getPOEType()?.title);
 
         const stagiaire: StagiaireModel = new StagiaireModel();
-        stagiaire.setBirthDate(new Date(2042, 3, 30));
+        stagiaire.setBirthDate(new Date(1968, 3, 30));
         stagiaire.lastName = 'Aubert';
         stagiaire.firstName = 'Jean-Luc';
         stagiaire.setPOE(poe);
+        stagiaire.setStrategy(new PrintFullStagiaireStrategy());
+        console.log(stagiaire.toString());
 
         const stagiaireRepository: StagiaireRepository = new StagiaireRepository();
         stagiaireRepository.add(stagiaire);

@@ -1,6 +1,8 @@
 import { Comparable } from "../interfaces/comparable";
 import { Model } from "./model";
 import { POEModel } from "./poe-model";
+import { IPrintStagiaireStrategy } from "./strategies/i-print-stagiaire-strategy";
+import { PrintNameLastnameStrategy } from "./strategies/print-name-lastname-strategy";
 
 export class StagiaireModel extends Model implements Comparable<StagiaireModel> {
 
@@ -8,6 +10,8 @@ export class StagiaireModel extends Model implements Comparable<StagiaireModel> 
     public lastName: string = '';
     private birthDate: Date = new Date();
     private poe: POEModel = new POEModel();
+
+    private printStrategy: IPrintStagiaireStrategy = new PrintNameLastnameStrategy();
 
     public setBirthDate(birthDate: Date): void {
         const today: Date = new Date();
@@ -26,7 +30,15 @@ export class StagiaireModel extends Model implements Comparable<StagiaireModel> 
         this.poe = poe;
         this.poe.add(this);
     }
+
+    public getPOE(): POEModel {
+        return this.poe;
+    }
     
+    public setStrategy(strategy: IPrintStagiaireStrategy): void {
+        this.printStrategy = strategy;
+    }
+
     /**
      * @override
      * @see Model::toString()
@@ -34,10 +46,7 @@ export class StagiaireModel extends Model implements Comparable<StagiaireModel> 
      * @returns string
      */
     public toString(): string {
-        return `${this.firstName} ${this.lastName}
-            ${this.birthDate.getDate()}-${this.birthDate.getMonth() + 1}-${this.birthDate.getFullYear()} 
-            ${this.poe.toString()}
-        `;
+        return this.printStrategy.print(this);
     }
 
     public compare(t: StagiaireModel): number {
